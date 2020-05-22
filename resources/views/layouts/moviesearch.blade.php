@@ -4,7 +4,7 @@
         <div class="box">
             <div class="field has-addons">
                 <div class="control is-expanded">
-                    <input class="input" type="search" name="q" placeholder="Search a movie">
+                    <input class="input" type="search" name="q" placeholder="Search movies">
                 </div>
                 <div class="control">
                     <button type="submit" class="button is-info">

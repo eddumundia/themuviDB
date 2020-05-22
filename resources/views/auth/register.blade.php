@@ -3,7 +3,22 @@
 @section('content')
 <h4>Login</h4>
 <div class="box container">
-    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+    <div class="columns">
+        <div class="column bg_person has-background-black">
+            <div class="mainregister">
+                <span>
+                    <ul>
+                        <li><i class="fa fa-check"></i>Track movies and tv series you have watched</li>
+                        <li><i class="fa fa-check"></i>Get notified when the next episode/season is available</li>
+                        <li><i class="fa fa-check"></i>Get suggestions based on your movies and series</li>
+                        <li><i class="fa fa-check"></i>Order movies from the nearest shop</li>
+                        <li><i class="fa fa-check"></i>Check what movies your friends have</li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div class="column">
+              <form class="form-horizontal" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
 
         <div class="field{{ $errors->has('name1') ? ' has-error' : '' }}">
@@ -87,13 +102,44 @@
         </div>
 
         <div class="field">
-            <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="button is-info">
-                    Register
-                </button>
-                <a href="{{ route('login') }}" class="button">Login</a>
+            <div class="columns">
+                <div class="column">
+                    <button type="submit" class="button is-info is-fullwidth">
+                        Register
+                    </button>
+                </div>
+                <div class="column">
+                    <a href="{{ route('login') }}" class="button is-fullwidth">Login</a>
+                </div>
             </div>
         </div>
     </form>
+        </div>
+    </div>
+  
 </div>
 @endsection
+
+<style type="text/css">
+    .bg_person{
+        background-image: url("http://image.tmdb.org/t/p/w342///zvBCjFmedqXRqa45jlLf6vBd9Nt.jpg" );
+        background-repeat: no-repeat ;
+        background-position:center;
+    }
+     .mainregister{
+        top: 100px;
+        position: relative;
+        height: 300px;
+        text-align:center;
+        border: 1px solid white;
+        background:rgb(0,0,255);     /* IE6/7/8 */
+        filter:alpha(opacity=30);     /* IE6/7/8 */
+        background:rgba(0,0,255,0.3);  /* Modern Browsers */
+    }
+     .mainregister span {
+        position:relative;   /* IE6/7/8 */
+        color:white;
+        font-size:20px;
+        margin:0;
+    }
+</style>

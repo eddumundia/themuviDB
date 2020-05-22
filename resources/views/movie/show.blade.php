@@ -3,7 +3,7 @@
 @section('content')
 
 @include('layouts.moviesearch')
-<title><?= $movie->getoriginalTitle();?> - ({!!$movie->getReleaseDate()->format('Y')!!})</title>
+<title><?= $movie->getoriginalTitle();?> - ({!!$movie->getReleaseDate()->format('Y')!!}) </title>
 <section class="hero bg_drop">
     <div class="container">
         <div class="box">
@@ -22,12 +22,12 @@
                         <p>
                         <h4><a href="{{ url('/movie/') }}/{{$movie->getId()}}" style="text-decoration:none;color: inherit;"><?= $movie->getoriginalTitle();?>  <span class="smalltitle">({!!$movie->getReleaseDate()->format('Y')!!})</span></a>
                             <span class="subtitle is-6 is-pulled-right"> {!!$movie->getvoteAverage()!!} &#9733;&#9733;&#9733;</span><br>
+                            <a href="{{ url('/movie/mymovies') }}/{{$movie->getId()}}">Watched</a>
                             <small>
                                 <?php
-                                foreach ($movie->getGenres() as $value) {
-                                    echo "<span class='tag is-rounded is-success'>".$value->getName()."</span>";
-                                    echo ", ";
-                                }
+                                foreach ($movie->getGenres() as $value) {?>
+                                    <a href="{{ url('/genre/index/1') }}/{{$value->getId()}}"><span class='tag is-rounded is-success'><?= $value->getName();?></span></a>,
+                               <?php }
                                 ?>
                                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="eddumundia" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                              
@@ -55,10 +55,9 @@
                                     ?></p>
                             </div>
                             <div class="column">
-                                <a href="{{ url('/movie/mymovies') }}/{{$movie->getId()}}">Watched</a>
-                            </div>
-                            <div class="column">
-                                <a href="#">Where to find</a>
+                                Shops that have thee movie in store
+                                 <div id="map">
+                                <a href="#">Where to find</a></div>
                             </div>
                         </div>
                     </div>
@@ -131,6 +130,27 @@
        
     </div>
 </section>
+    
+    <button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
 
     <div id="showtrailer" class="modal">
         <div class="modal-background"></div>
@@ -190,6 +210,10 @@ div.no_image_holder.w138_and_h175 {
     line-height: 175px;
     font-size: 55px;
 }
+#map{
+    height: 315px;
+    border: 1px solid black;
+}
 
 </style>
 <script>
@@ -210,6 +234,16 @@ div.no_image_holder.w138_and_h175 {
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=402810093095199&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
      
 
      

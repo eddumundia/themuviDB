@@ -15,28 +15,26 @@ use Illuminate\Support\Facades\Input;
 Route::post('/logout', 'Sessioncontroller@logout');
 
 
+//Route::get('/movie/index/{page?}', function ($page = null) {
+//    return $page;
+//});
 
-Route::get('/', 'MovieController@index');
+Route::get('/', 'MovieController@collection');
+
+Route::get('/genre/index/{id}/{page}', ['uses' => 'GenreController@index']);
+
+Route::get('/movie/index/{id}', ['uses' => 'MovieController@index']);
 
 Route::get('/movie/listmovies', [
     'as'   => 'listmovies',
     'uses' => 'MovieController@listmovies'
 ]);
 
-Route::get('/movie/toprated', [
-    'as'   => 'toprated',
-    'uses' => 'MovieController@toprated'
-]);
+Route::get('/movie/toprated/{id}', ['uses' => 'MovieController@toprated']);
 
-Route::get('/movie/upcoming/', [
-    'as'   => 'upcoming',
-    'uses' => 'MovieController@upcoming'
-]);
+Route::get('/movie/upcoming/{id}', ['uses' => 'MovieController@upcoming']);
 
-Route::get('/movie/nowplaying', [
-    'as'   => 'nowplaying',
-    'uses' => 'MovieController@nowplaying'
-]);
+Route::get('/movie/nowplaying/{id}', ['uses' => 'MovieController@nowplaying']);
 
 Route::get('/movie/{id}', [
     'as'   => 'show',

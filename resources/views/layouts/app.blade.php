@@ -29,23 +29,23 @@
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
                     <a href="{{ url('/') }}" class="navbar-item is-active">
-                        Home
+                        </span>Home
                     </a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a href="{{ url('/') }}" class="navbar-link">
+                        <a href="{{ url('//movie/index/1') }}" class="navbar-link">
                             Movies
                         </a>
                         <div class="navbar-dropdown">
-                            <a  href="{{ url('/') }}" class="navbar-item">
+                            <a  href="{{ url('/movie/index/1') }}" class="navbar-item">
                                 Popular
                             </a>
-                            <a  href="{{ url('/movie/toprated') }}" class="navbar-item">
+                            <a  href="{{ url('/movie/toprated/1') }}" class="navbar-item">
                                 Top rated
                             </a>
-                            <a  href="{{ url('/movie/upcoming') }}" class="navbar-item">
+                            <a  href="{{ url('/movie/upcoming/1') }}" class="navbar-item">
                                 Upcoming
                             </a>
-                            <a  href="{{ url('/movie/nowplaying') }}" class="navbar-item">
+                            <a  href="{{ url('/movie/nowplaying/1') }}" class="navbar-item">
                                 Now playing
                             </a>
                         </div>
@@ -58,13 +58,13 @@
                             <a href="{{ url('/series/index') }}" class="navbar-item">
                                 Popular
                             </a>
-                            <a  href="{{ url('/series/toprated') }}" class="navbar-item">
+                            <a  href="{{ url('/series/toprated/1') }}" class="navbar-item">
                                 Top rated
                             </a>
-                            <a  href="{{ url('/series/upcoming') }}" class="navbar-item">
+                            <a  href="{{ url('/series/upcoming/1') }}" class="navbar-item">
                                 Upcoming
                             </a>
-                            <a  href="{{ url('/series/nowplaying') }}" class="navbar-item">
+                            <a  href="{{ url('/series/nowplaying/1') }}" class="navbar-item">
                                 Now playing
                             </a>
                         </div>
@@ -108,7 +108,7 @@
                               Logout
                           </a>
                           <div class="navbar-dropdown">
-                              <a href="{{ url('/register') }}" class="navbar-item">
+                              <a href="{{ url('/movie/listmovies') }}" class="navbar-item">
                                   My movies
                               </a>
                               <a href="{{ url('/register') }}" class="navbar-item">
@@ -184,10 +184,21 @@
                     background: #041221;
                 }
 
+
                 .footer{
                     margin-top: 20px;
                     background-color: #222831;
                     color: lemonchiffon;
+                }
+                 .footer2{
+                    margin-top: 20px;
+                    background-color: #222831;
+                    color: lemonchiffon;
+                    position:fixed;
+                    left:0px;
+                    bottom:0px;
+                    height:30px;
+                    width:100%;
                 }
                 .footer p, strong
                 {color: lemonchiffon}
@@ -201,6 +212,7 @@
                     margin-bottom: 10px;
                 }
             </style>
+          
 
 
 </body>

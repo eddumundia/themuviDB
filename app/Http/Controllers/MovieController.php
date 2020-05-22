@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Tmdb\Laravel\Facades\Tmdb;
 use Tmdb\Helper\ImageHelper;
 use Tmdb\Repository\MovieRepository;
+use Tmdb\Repository\GenreRepository;
 
 use App\Movie;
 
@@ -19,14 +20,15 @@ class MovieController extends Controller
     
     private $movies;
     
-    public function __construct(MovieRepository $movies, ImageHelper $helper)
+    public function __construct(MovieRepository $movies, GenreRepository $genre, ImageHelper $helper)
     {
         $this->movies = $movies;
+        $this->genres = $genre;
     }
-    public function index()
+    public function index($id = NULL)
     {
-        $popular = $this->movies->getPopular();
-        return view('movie.index', [ 'popular' => $popular, 'title' =>'Popular' ]);
+        $popular = $this->movies->getPopular(array('page'=>$id));
+        return view('movie.index', [ 'popular' => $popular, 'title' =>'Popular', 'route' =>'index']);
         
     }
 
@@ -62,7 +64,7 @@ class MovieController extends Controller
        $movie = $this->movies->load($id);
        
 //        echo "<pre>";
-//            print_r($movie);
+//            print_r($movie->getGenres());
 //            echo "</pre>";
 //            exit;
 //        $data = $movie->getGenres();
@@ -111,23 +113,23 @@ class MovieController extends Controller
         //
     }
     
-    public function toprated(){
-        $toprated = $this->movies->getTopRated();
-        return view('movie.index', ['popular' => $toprated, 'title' =>'Top rated' ]);
+    public function toprated($id = NULL){
+        $toprated = $this->movies->getTopRated(array('page'=>$id));
+        return view('movie.index', ['popular' => $toprated, 'title' =>'Top rated', 'route' =>'toprated']);
     }
     
-    public function upcoming(){
-      $upcoming = $this->movies->getUpcoming();
-      return view('movie.index', [ 'popular' => $upcoming , 'title' =>'Upcoming' ]);
+    public function upcoming($id = NULL){
+      $upcoming = $this->movies->getUpcoming(array('page'=>$id));
+      return view('movie.index', [ 'popular' => $upcoming , 'title' =>'Upcoming', 'route' =>'upcoming']);
     }
     
-    public function nowplaying(){
-      $nowplaying = $this->movies->getNowPlaying();
-      return view('movie.index', [ 'popular' => $nowplaying, 'title' =>'Now playing'  ]);
+    public function nowplaying($id = NULL){
+      $nowplaying = $this->movies->getNowPlaying(array('page'=>$id));
+      return view('movie.index', [ 'popular' => $nowplaying, 'title' =>'Now playing', 'route' =>'nowplaying']);
     }
     
     public function mymovies($id){
-        if (Auth::guest()){
+        if (\Auth::guest()){
             return redirect("/login")->with('danger', 'Please login to access it');
         }else{
          $data = Movie::where(['tmdb_id' =>$id])->first();
@@ -139,22 +141,35 @@ class MovieController extends Controller
            ]);
 
            \Session::flash('success','Record added');
-           return redirect("/movie/$id");
+           return redirect("/movie/listmovies");
          }
-         return redirect("/movie/$id")->with('danger', 'The movie is already in your list');
+         return redirect("/movie/listmovies")->with('danger', 'The movie is already in your list');
         }
     }
     
     public function listmovies(){
-        $data = Movie::where(['user_id' => \Auth::user()->id])->get();
-        $records = [];
-        foreach ($data as $movie) {
-            $records[] = $this->movies->load($movie->tmdb_id);
-        }
-        
+        $test = geoip($ip = '192.168.100.203');
         echo "<pre>";
-        print_r($records);
-        echo "</pre>";
-        
+        print_r($test);
+        exit;
+//        $data = Movie::where(['user_id' => \Auth::user()->id])
+//                ->orderBy('id','DESC')
+//                ->get();
+//        $records = [];
+//        foreach ($data as $movie) {
+//            $records[] = $this->movies->load($movie->tmdb_id);
+//        }
+//        return view('movie.mymovies', [ 'records' => $records]);      
+   }
+   
+   
+    
+    public function collection(){
+        $genre = $this->genres->loadMovieCollection();
+        $toprated = $this->movies->getTopRated();
+        $movieTmdb = \App\Random::all()->random(1);
+        $image = $movieTmdb[0]->image;
+        $bannerdetails = $this->movies->load($movieTmdb[0]->tmdb_id);
+        return view('movie.home', ['popular' => $toprated, 'genres' => $genre, 'bannerdetails' =>$bannerdetails]);
     }
 }

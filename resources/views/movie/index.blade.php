@@ -32,6 +32,8 @@
                                 <br>
                                 {!!substr($movie->getoverview(),0, 300)!!} 
                             </p>
+                            
+                        
                         </div>
                     </div>
                 </article>
@@ -45,7 +47,7 @@
         <ul class="pagination-list">
             <?php for( $i = 1; $i<$popular->gettotalPages(); $i++ ) {?>
             <li>
-                <a href="" class="pagination-link is-current" aria-label="Goto page {}">{{$i}}</a>
+                <a href="{!! url('/movie/') !!}/{{$route}}/<?= $i;?>" class="pagination-link is-light" aria-label="Goto page {}">{{$i}}</a>
             </li>
             <?php 
             if ($i==20){break;}};
@@ -59,6 +61,10 @@
 @push('scripts')
 
 <style>
+    #links{
+       position: relative; bottom: 0px;  
+    }
+    #c2 {  margin-top: auto; }
     div.no_image_holder.w300_and_h450 {
     width: 300px;
     height: 450px;
@@ -82,6 +88,25 @@ div.no_image_holder.w185_and_h278 {
     height: 278px;
     line-height: 278px;
     font-size: 92px;
+}
+div.item.card p.view_more {
+    border-top: 1px solid #e3e3e3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+}
+div.item p:last-of-type {
+    margin-bottom: 0;
+}
+div.item p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    width: 100%;
+    line-height: 1.2em;
+    margin: 0;
 }
 </style>
 

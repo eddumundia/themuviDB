@@ -33,7 +33,7 @@ class SearchController extends Controller
         $query = new \Tmdb\Model\Search\SearchQuery\MovieSearchQuery();
         $data = $this->search->searchMovie($q,$query);
         
-        return view('movie.index', [ 'popular' => $data, 'title'=>'Search query' ]);
+        return view('movie.index', [ 'popular' => $data, 'title'=>'Search query', 'route' =>'']);
     }
     
     public function people(Request $request)

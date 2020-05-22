@@ -9,7 +9,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "miloschuman/yii2-highcharts-widget": "^6.0",
-        "php-tmdb/laravel": "^1.1"
+        "php-tmdb/laravel": "^1.1",
+        "torann/geoip": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
