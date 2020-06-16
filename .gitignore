@@ -1,5 +1,6 @@
 /node_modules
-/public/hot
+/public/hot/
+/storage/tmdb
 /public/storage
 /storage/*.key
 /vendor
