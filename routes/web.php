@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Input;
 Route::post('/logout', 'Sessioncontroller@logout');
 
 
-//Route::get('/movie/index/{page?}', function ($page = null) {
-//    return $page;
-//});
-
 Route::get('/', 'MovieController@collection');
 
 Route::get('/genre/index/{id}/{page}', ['uses' => 'GenreController@index']);
@@ -54,20 +50,14 @@ Route::get('/series/index', [
     'uses' => 'SeriesController@index'
 ]);
 
-Route::get('/series/toprated', [
-    'as'   => 'toprated',
-    'uses' => 'SeriesController@toprated'
-]);
 
-Route::get('/series/upcoming', [
-    'as'   => 'upcoming',
-    'uses' => 'SeriesController@upcoming'
-]);
 
-Route::get('/series/nowplaying', [
-    'as'   => 'nowplaying',
-    'uses' => 'SeriesController@nowplaying'
-]);
+Route::get('/series/toprated/{id}', ['uses' => 'SeriesController@toprated']);
+
+Route::get('/series/upcoming/{id}', ['uses' => 'SeriesController@upcoming']);
+
+Route::get('/series/nowplaying/{id}', ['uses' => 'SeriesController@nowplaying']);
+
 
 Route::get('/series/{id}', [
     'as'   => 'show',

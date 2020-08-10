@@ -28,7 +28,7 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong><a href="{{ url('/movie/') }}/{{$movie->getId()}}" style="text-decoration:none;color: black;"><?= $movie->getoriginalTitle(); ?></a></strong> <small><i>Rating - {!!number_format((float)$movie->getvoteAverage(), 1, '.', '')!!}</i></small> <small class="is-pulled-right">{!!$movie->getReleaseDate()->format('Y')!!}</small><br>
+                                <strong><a href="{{ url('/movie/') }}/{{$movie->getId()}}" style="text-decoration:none;color: black;"><?= $movie->getoriginalTitle(); ?></a></strong> <small><i>Rating - {!!$movie->getvoteAverage(), 1, '.', ''!!}</i></small> <small class="is-pulled-right">{!!$movie->getReleaseDate()->format('Y')!!}</small><br>
                                 <br>
                                 {!!substr($movie->getoverview(),0, 300)!!} 
                             </p>

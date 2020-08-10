@@ -22,6 +22,16 @@ class GenreController extends Controller
 
         
         $genres = $this->genres->getMovies($id, array('page' =>$page));
+        echo "<pre>";
+        //print_r($genres);
+        
+        foreach ($genres as $genres) {
+            echo $genres->getGenres();
+        }
+//        
+        echo "</pre>";
+        exit;
+       // $movie->getReleaseDate()
         return view('genres.index', ['popular' => $genres, 'title' =>'Movies based on genres', 'route' =>$id]);
     }
 }

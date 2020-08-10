@@ -32,7 +32,7 @@
                         </span>Home
                     </a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a href="{{ url('//movie/index/1') }}" class="navbar-link">
+                        <a href="{{ url('/movie/index/1') }}" class="navbar-link">
                             Movies
                         </a>
                         <div class="navbar-dropdown">

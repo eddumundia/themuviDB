@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'themuvi'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'eddmnda_muvidb'),
+            'username' => env('DB_USERNAME', 'eddmnda'),
+            'password' => env('DB_PASSWORD', 'X2m13hUg6Z[hI.'),
             'unix_socket' => env('DB_SOCKET', ''),
             'prefix' => env('DB_TABLE_PREFIX', 'tbl_'),
             'charset' => 'utf8mb4',

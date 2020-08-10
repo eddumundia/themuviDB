@@ -115,6 +115,8 @@ class SeriesController extends Controller
     
      public function toprated(){
         $toprated = $this->series->getTopRated();
+//        print_r($toprated);
+//        exit;
         return view('series.index', [ 'popular' => $toprated ]);
     }
     
