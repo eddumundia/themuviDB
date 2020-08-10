@@ -18,7 +18,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    Movies
+                    MUVI DB
                 </a>
                 <span class="navbar-burger burger" data-target="navbarMenu">
                     <span></span>

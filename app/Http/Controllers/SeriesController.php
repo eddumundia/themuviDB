@@ -21,16 +21,17 @@ class SeriesController extends Controller
         $this->series = $series;
     }
       
-    public function index()
+    public function index($id = NULL)
     {
-        $popular = $this->series->getPopular();
+        $popular = $this->series->getPopular(array('page'=>$id));
+       // $popular = $this->series->getPopular();
         
-//        echo "<pre>";
-//        print_r($popular);
-//        echo "</pre>";
-//        exit;
-        
-         return view('series.index', [ 'popular' => $popular ]);
+      // echo "<pre>";
+      // print_r($popular);
+      // echo "</pre>";
+      // exit;
+//        
+         return view('series.index', [ 'popular' => $popular,'title' =>'Popular', 'route' => 'index' ]);
     }
 
     /**
@@ -113,20 +114,20 @@ class SeriesController extends Controller
         //
     }
     
-     public function toprated(){
-        $toprated = $this->series->getTopRated();
+     public function toprated($id = NULL){
+        $toprated = $this->series->getTopRated(array('page'=>$id));
 //        print_r($toprated);
 //        exit;
-        return view('series.index', [ 'popular' => $toprated ]);
+        return view('series.index', [ 'popular' => $toprated,'title' =>'Popular', 'route' =>'toprated' ]);
     }
     
-    public function upcoming(){
-      $upcoming = $this->series->getOnTheAir();
-      return view('series.index', [ 'popular' => $upcoming ]);
+    public function upcoming($id = NULL){
+      $upcoming = $this->series->getOnTheAir(array('page'=>$id));
+      return view('series.index', [ 'popular' => $upcoming, 'title' =>'Upcoming', 'route' =>'upcoming'  ]);
     }
     
-    public function nowplaying(){
-        $nowplaying = $this->series->getAiringToday();
+    public function nowplaying($id = NULL){
+        $nowplaying = $this->series->getAiringToday(array('page'=>$id));
       
 //      foreach ($nowplaying as $value) {
 //          print_r($value->getLastAirDate());
@@ -138,6 +139,6 @@ class SeriesController extends Controller
 //      print_r($nowplaying);
 //      echo "</pre>";
 //      exit;
-      return view('series.index', [ 'popular' => $nowplaying ]);
+      return view('series.index', [ 'popular' => $nowplaying, 'title' =>'Now playing', 'route' =>'nowplaying' ]);
     }
 }

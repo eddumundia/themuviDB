@@ -5,6 +5,7 @@
 @include('layouts.tvsearch')
 
 <div class="container">
+    <h2><span class="tag is-white">Displaying {!!$popular->gettotalResults()!!} <?= $title;?> TV series</span></h2>
     <div class="columns is-multiline">
     
     <?php
@@ -34,6 +35,19 @@
         </div>
     <?php }?>
     </div>
+        <nav class="pagination has-background-white" role="navigation" aria-label="pagination">
+        <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a>
+        <ul class="pagination-list">
+            <?php for( $i = 1; $i<$popular->gettotalPages(); $i++ ) {?>
+            <li>
+                <a href="{!! url('/series/') !!}/{{$route}}/<?= $i;?>" class="pagination-link is-light" aria-label="Goto page {}">{{$i}}</a>
+            </li>
+            <?php 
+            if ($i==20){break;}};
+            ?>
+        </ul>
+    </nav>
    </div> 
 
 @endsection

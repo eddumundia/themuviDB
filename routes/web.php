@@ -59,6 +59,9 @@ Route::get('/series/upcoming/{id}', ['uses' => 'SeriesController@upcoming']);
 Route::get('/series/nowplaying/{id}', ['uses' => 'SeriesController@nowplaying']);
 
 
+Route::get('/series/index/{id}', ['uses' => 'seriesController@index']);
+
+
 Route::get('/series/{id}', [
     'as'   => 'show',
     'uses' => 'SeriesController@show'

@@ -63,10 +63,10 @@ class MovieController extends Controller
     {
        $movie = $this->movies->load($id);
        
-//        echo "<pre>";
-//            print_r($movie->getGenres());
-//            echo "</pre>";
-//            exit;
+       // echo "<pre>";
+       //     print_r($movie->getGenres());
+       //     echo "</pre>";
+       //     exit;
 //        $data = $movie->getGenres();
 //        foreach ($data as $value) {
 //            echo "<pre>";
