@@ -1,7 +1,7 @@
 <div class="container">
 	<h4>The Muvi DB</h4>
 	<div class="top">
-		<img src=" http://image.tmdb.org/t/p/w185//<?= $movie->getPosterPath(); ?>" alt="Image">
+		<img src="public/images/readme.png" alt="Image">
 	</div>
 	<div class="bottom">
 		<p>The Muvi DB is an web based application that contains 10 + Million movies, TV series and actors. The word Muvi is derived from swahili word to mean movies, while DB is the shortform of DB tthat symbolizes a collections of record<p>
