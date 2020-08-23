@@ -7,6 +7,7 @@ use Tmdb\Laravel\Facades\Tmdb;
 use Tmdb\Helper\ImageHelper;
 use Tmdb\Repository\MovieRepository;
 use Tmdb\Repository\GenreRepository;
+use Tmdb\Repository\TvRepository;
 
 use App\Movie;
 
@@ -20,11 +21,13 @@ class MovieController extends Controller
     
     private $movies;
     
-    public function __construct(MovieRepository $movies, GenreRepository $genre, ImageHelper $helper)
+    public function __construct(MovieRepository $movies, GenreRepository $genre, TvRepository $series, ImageHelper $helper)
     {
         $this->movies = $movies;
         $this->genres = $genre;
+        $this->series = $series;
     }
+    
     public function index($id = NULL)
     {
         $popular = $this->movies->getPopular(array('page'=>$id));
@@ -147,20 +150,20 @@ class MovieController extends Controller
         }
     }
     
-    public function listmovies(){
-        $test = geoip($ip = '192.168.100.203');
-        echo "<pre>";
-        print_r($test);
-        exit;
-//        $data = Movie::where(['user_id' => \Auth::user()->id])
-//                ->orderBy('id','DESC')
-//                ->get();
-//        $records = [];
-//        foreach ($data as $movie) {
-//            $records[] = $this->movies->load($movie->tmdb_id);
-//        }
-//        return view('movie.mymovies', [ 'records' => $records]);      
-   }
+//     public function listmovies(){
+//         $test = geoip($ip = '192.168.100.203');
+//         echo "<pre>";
+//         print_r($test);
+//         exit;
+// //        $data = Movie::where(['user_id' => \Auth::user()->id])
+// //                ->orderBy('id','DESC')
+// //                ->get();
+// //        $records = [];
+// //        foreach ($data as $movie) {
+// //            $records[] = $this->movies->load($movie->tmdb_id);
+// //        }
+// //        return view('movie.mymovies', [ 'records' => $records]);      
+//    }
    
    
     
@@ -170,6 +173,7 @@ class MovieController extends Controller
         $movieTmdb = \App\Random::all()->random(1);
         $image = $movieTmdb[0]->image;
         $bannerdetails = $this->movies->load($movieTmdb[0]->tmdb_id);
-        return view('movie.home', ['popular' => $toprated, 'genres' => $genre, 'bannerdetails' =>$bannerdetails]);
+        $series = $this->series->getTopRated(array('id' => 1));
+        return view('movie.home', ['popular' => $toprated, 'genres' => $genre, 'series' =>$series, 'bannerdetails' =>$bannerdetails]);
     }
 }

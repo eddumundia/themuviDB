@@ -5,7 +5,7 @@
 @include('layouts.moviesearch')
  
 <div class="container">
-    <h2><span class="tag is-white">Displaying {!!$popular->gettotalPages()!!} <?= $title;?> movies</span></h2>
+    <h2><span class="tag is-white">Displaying {!!$popular->gettotalResults()!!} <?= $title;?> movies</span></h2>
     <div class="columns is-multiline">
         
     <?php
@@ -28,12 +28,29 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong><a href="{{ url('/movie/') }}/{{$movie->getId()}}" style="text-decoration:none;color: black;"><?= $movie->getoriginalTitle(); ?></a></strong> <small><i>Rating - {!!$movie->getvoteAverage(), 1, '.', ''!!}</i></small> <small class="is-pulled-right"></small><br>
-                                <br>
-                                {!!substr($movie->getoverview(),0, 300)!!} 
-                            </p>
+                                <strong><a href="{{ url('/movie/') }}/{{$movie->getId()}}" style="text-decoration:none;color: black;"><?= $movie->getoriginalTitle(); ?></a></strong> <small class="subtitle is-6 is-pulled-right"><i>Rating - {!!$movie->getvoteAverage(), 1, '.', ''!!}</i></small> <small class="is-pulled-right"></small><br>
+                                {{ str_limit($movie->getoverview(), $limit = 150, $end = '...') }}<a href="{{ url('/movie/') }}/{{$movie->getId()}}">Details</a>
+                                
+                            </p><br><br><br><br><br>
+
                         </div>
+                       <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item" href="hahha">
+                              <i class="fas fa-heart" ></i>&nbsp; Watched
+                            </a>
+
+                            <a class="level-item">
+                              <i class="fas fa-heart"></i>&nbsp; Locate
+                            </a>
+
+                            <a class="level-item">
+                              <i class="fas fa-heart"></i>&nbsp; Tweet
+                            </a>
+                          </div>
+                        </nav>
                     </div>
+
                 </article>
             </div>
         </div>
@@ -53,6 +70,7 @@
         </ul>
     </nav>
    </div>
+   
 
 @endsection
 

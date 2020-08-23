@@ -24,11 +24,27 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong><a href="{{ url('/series/') }}/{{$serie->getId()}}" style="text-decoration:none;color: black;"><?= $serie->getname();?></a></strong> <small><i>Rating {!!number_format((float)$serie->getvoteAverage(), 1, '.', '')!!}</i></small> <small></small>
+                                <strong><a href="{{ url('/series/') }}/{{$serie->getId()}}" style="text-decoration:none;color: black;"><?= $serie->getname();?></a></strong> <small class="subtitle is-6 is-pulled-right"><i>Rating {!!number_format((float)$serie->getvoteAverage(), 1, '.', '')!!}</i></small> <small></small>
                                 <br>
-                                {!!substr($serie->getoverview(),0, 300)!!} 
-                            </p>
+                                   {{ str_limit($serie->getoverview(), $limit = 150, $end = '...') }}<a href="{{ url('/series/') }}/{{$serie->getId()}}">Details</a>
+                            
+                            </p><br><br><br><br><br>
                         </div>
+                         <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item" href="hahha">
+                              <i class="fas fa-heart" ></i>&nbsp; Watched
+                            </a>
+
+                            <a class="level-item">
+                              <i class="fas fa-heart"></i>&nbsp; Locate
+                            </a>
+
+                            <a class="level-item">
+                              <i class="fas fa-heart"></i>&nbsp; Tweet
+                            </a>
+                          </div>
+                        </nav>
                     </div>
                 </article>
             </div>

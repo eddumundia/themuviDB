@@ -20,6 +20,19 @@
         </div>
         <?php } ?>
     </div>
+         <nav class="pagination has-background-white" role="navigation" aria-label="pagination">
+        <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a>
+        <ul class="pagination-list">
+            <?php for( $i = 1; $i<$popular->gettotalPages(); $i++ ) {?>
+            <li>
+                <a href="{!! url('/person/') !!}/{{$route}}/<?= $i;?>" class="pagination-link is-light" aria-label="Goto page {}">{{$i}}</a>
+            </li>
+            <?php 
+            if ($i==20){break;}};
+            ?>
+        </ul>
+    </nav>
 </div>
 
 @endsection

@@ -20,9 +20,9 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $popular = $this->people->getpopular();
+    public function index($id = NULL)
+    {     
+        $popular = $this->people->getpopular(array('page'=>$id));
         
 //        echo "<pre>";
 //        foreach ($popular as $value) {
@@ -32,7 +32,7 @@ class PersonController extends Controller
 //        echo "</pre>";
 //        exit;
 //        
-        return view('person.index', [ 'popular' => $popular ]);
+        return view('person.index', [ 'popular' => $popular, 'title' =>'Popular', 'route' =>'index']);
     }
 
     /**

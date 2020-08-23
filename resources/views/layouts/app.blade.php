@@ -157,10 +157,12 @@
                         <a href="https://www.youtube.com/user/eddumundia"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
                         <a href="https://www.facebook.com/eddumundia"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
                         <a href="https://twitter.com/eddumundia"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://github.com/eddumundia"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/edward-mundia-47133b3b/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
                     </div>
                     <p>
-                        <strong>Movies</strong> by <a href="https://twitter.com/eddumundia">Edward Mundia</a>. 
-                &copy; The Movies DB <?= date('Y') ?>
+                        <strong>Movies</strong> by <a href="https://eddumundia.com/about.html" target="_blank">Edward Mundia</a>. 
+                &copy; The Muvi DB <?= date('Y') ?>
                     </p>
                 </div>
             </div>
@@ -186,20 +188,11 @@
 
 
                 .footer{
-                    margin-top: 20px;
+                    margin-top: -50px;
                     background-color: #222831;
                     color: lemonchiffon;
                 }
-                 .footer2{
-                    margin-top: 20px;
-                    background-color: #222831;
-                    color: lemonchiffon;
-                    position:fixed;
-                    left:0px;
-                    bottom:0px;
-                    height:30px;
-                    width:100%;
-                }
+                
                 .footer p, strong
                 {color: lemonchiffon}
                 .footer a:hover

@@ -51,7 +51,7 @@ class SearchController extends Controller
         $query = new \Tmdb\Model\Search\SearchQuery\TvSearchQuery();
         $data = $this->search->searchTv($q,$query);
         
-        return view('series.index', [ 'popular' => $data ]);
+        return view('series.index', [ 'popular' => $data , 'title'=>'Search query', 'route' =>'']);
     }
 
 

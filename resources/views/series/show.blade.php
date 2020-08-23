@@ -32,7 +32,8 @@
                             
                         </p>
                         <div class="columns">
-                            <div class="column">
+                            <div class="column is-centered">
+                                <h4>Official Trailer</h4>
                                 <p>
                                     <?php $i = 0;
                                     foreach ($series->getVideos() as $video) {
@@ -45,12 +46,12 @@
                                     }
                                     ?></p>
                             </div>
-                            <div class="column">
+                           <!--  <div class="column">
                                 <a href="#">Watched</a>
                             </div>
                             <div class="column">
                                 <a href="#">Where to find</a>
-                            </div>
+                            </div> -->
                            
                         </div>
                     </div>

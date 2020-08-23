@@ -77,6 +77,8 @@ Route::get('/person/', [
     'uses' => 'PersonController@index'
 ]);
 
+Route::get('/person/index/{id}', ['uses' => 'personController@index']);
+
 Route::post( '/search', 'SearchController@store');
 
 Route::post('/search/movie', [

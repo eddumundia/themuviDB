@@ -42,8 +42,8 @@
                         <div class="columns">
                             
                             <div class="column">
-                                <p>Official trailer
-                                    <?php $i = 0;
+                                <h4>Official trailer</h4>
+                                   <p> <?php $i = 0;
                                     foreach ($movie->getVideos() as $video) {
                                         ?>
                                         <iframe width="560" height="309" src="https://www.youtube.com/embed/{!!$video->getKey()!!}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -54,11 +54,11 @@
                                     }
                                     ?></p>
                             </div>
-                            <div class="column">
+                            <!-- <div class="column">
                                 Shops that have thee movie in store
                                  <div id="map">
                                 <a href="#">Where to find</a></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -131,26 +131,7 @@
     </div>
 </section>
     
-    <button onclick="getLocation()">Try It</button>
 
-<p id="demo"></p>
-
-<script>
-var x = document.getElementById("demo");
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
-</script>
 
     <div id="showtrailer" class="modal">
         <div class="modal-background"></div>

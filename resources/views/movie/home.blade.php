@@ -29,29 +29,30 @@
             </div>
 </section><hr>
 <section class="hero">
-    <div class="container box">
-        <h2 class="has-text-centered">Genre</h2>
-        <div class="columns is-multiline">
+    <div class="container3 box">
+        <h2 class="has-text-centered box">Explore latest TV Shows </h2>
+        <div class="columns">
             <?php
-            foreach ($genres as $genre) {
+            foreach ($series as $serie) {
                 ?>
-                <a href="{{ url('/genre/index') }}/{{$genre->getId()}}/1">
-                    <div class="column is-one-quarter">
-                        <?= $genre->getName();?> 
-                    </div>
-                </a>
+                <div class="column">
+                    <a href="{{ url('/series/') }}/{{$serie->getId()}}">
+                        <img class="image" src=" http://image.tmdb.org/t/p/w342//<?= $serie->getPosterPath();?>" alt="Image">
+                    </a>
+                </div> 
              <?php }?>
     </div>
+
         </div>
 </section><hr>
-<section class="hero box">
+<!-- <section class="hero box">
     <h1 class="has-text-centered" style="font-family: 'Asset';"> Locate movie shop, see what they have in store and order</h1>
     <div class="container" style="border: 1px solid red;">
         <div class="googmaps">
             <p>Google not for free</p>
         </div>
     </div>
-</section>
+</section> -->
    
 @endsection
 
